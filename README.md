@@ -1,3 +1,3 @@
 ### 브랜치 연습
 
-1. Window branch 생성
+2. Window2 branch 생성
