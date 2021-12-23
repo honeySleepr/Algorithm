@@ -1,3 +1,4 @@
 ### 브랜치 연습
 
-2. Window2 branch 생성
+
+3. window + window2 를 합쳐버렸다!
