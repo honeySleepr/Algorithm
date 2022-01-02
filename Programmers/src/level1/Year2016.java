@@ -2,7 +2,7 @@ package level1;
 
 import java.util.Map;
 
-public class LeapYear9 {
+public class Year2016 {
     public static void main(String[] args) {
         Solution9 sol = new Solution9();
         sol.solution(2, 13);

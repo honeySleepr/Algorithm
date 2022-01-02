@@ -11,7 +11,7 @@
         <entry key="location-2" value="PROJECT_RELATIVE:$PROJECT_DIR$/../Naver_Coding_Convention/naver-checkstyle-rules.xml:Naver Checkstyle Rules 1.0" />
         <entry key="scan-before-checkin" value="false" />
         <entry key="scanscope" value="AllSourcesWithTests" />
-        <entry key="suppress-errors" value="false" />
+        <entry key="suppress-errors" value="true" />
       </map>
     </option>
   </component>
