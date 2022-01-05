@@ -1,15 +1,15 @@
-package class1;
+package bronze;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class BJ10998 {
+public class BJ2741 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int a = br.read()-'0';
-        br.read();
-        int b = br.read()-'0';
-        System.out.println(a*b);
+        int a = Integer.parseInt(br.readLine());
+        for (int i = 1; i < a+1; i++) {
+            System.out.println(i);
+        }
     }
 }

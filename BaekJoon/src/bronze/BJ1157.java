@@ -1,4 +1,4 @@
-package class1;//입력된 단어에서 가장 많이 사용된 알파벳을 출력. 단, 여기에 해당되는 알파벳이 두 개 이상인 경우 "?" 출력
+package bronze;//입력된 단어에서 가장 많이 사용된 알파벳을 출력. 단, 여기에 해당되는 알파벳이 두 개 이상인 경우 "?" 출력
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

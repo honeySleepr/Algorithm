@@ -1,4 +1,4 @@
-package class1;
+package bronze;
 /*StringTokenizer은 이전 버전과의 호환성을 위해 남겨져있는 기능이라 가능하면 split 기능 쓰는게 좋다고함.*/
 
 import java.io.BufferedReader;

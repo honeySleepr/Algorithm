@@ -1,4 +1,4 @@
-package class1;
+package bronze;
 
 public class BJ10172 {
     public static void main(String[] args) {
