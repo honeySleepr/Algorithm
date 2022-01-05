@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-
+/*큰 수 더하기*/
+/*BigInteger 안쓰고 풀기.
+자리수 다를 경우 작은 배열을 0으로 채워진 큰 배열로 값 하나씩 옮기는 방법 사용*/
 public class BJ10757 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
