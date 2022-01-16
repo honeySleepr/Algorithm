@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-/* 내 solution.. O(n^2);*/
+/* 내 solution.. 단순무식 2중 for문.. O(n^2);*/
 
 public class TwoSum {
     public static void main(String[] args) {
