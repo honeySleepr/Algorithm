@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/* https://programmers.co.kr/learn/courses/30/lessons/42840 */
 public class MathTest8 {
     public static void main(String[] args) {
         int[] mathProblem = {5, 2, 3, 4, 1, 4, 3, 5, 2};
