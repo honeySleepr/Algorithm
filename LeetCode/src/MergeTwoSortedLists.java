@@ -1,24 +1,12 @@
 public class MergeTwoSortedLists {
 
-    /**
-     * Definition for singly-linked list.
-     * public class ListNode {
-     *     int val;
-     *     ListNode next;
-     *     ListNode() {}
-     *     ListNode(int val) { this.val = val; }
-     *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-     * }
-     */
     class Solution {
         public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
             ListNode main;
             ListNode head;
             ListNode A = list1;
             ListNode B = list2;
-            if (A == null && B == null) {
-                return null;
-            }
+
             if (B == null) {
                 return A;
             }
@@ -36,28 +24,35 @@ public class MergeTwoSortedLists {
                 A = list1.next;
             }
 
-            while (true) {
+            while (A != null && B != null) {
                 if (A.val <= B.val) {
                     main.next = A;
                     A = A.next;
-                    main = main.next;
                 } else {
                     main.next = B;
                     B = B.next;
-                    main = main.next;
-
                 }
-
-                if (B == null) {
-                    main.next = A;
-                    break;
-                }
-                if (A == null) {
-                    main.next = B;
-                    break;
-                }
+                main = main.next;
             }
+
+            if (A == null) {
+                main.next = B;
+            } else {
+                main.next = A;
+            }
+
             return head;
         }
     }
+
+    /*
+     * Definition for singly-linked list.
+     * public class ListNode {
+     *     int val;
+     *     ListNode next;
+     *     ListNode() {}
+     *     ListNode(int val) { this.val = val; }
+     *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     * }
+     */
 }
