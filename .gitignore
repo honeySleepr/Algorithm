@@ -83,3 +83,5 @@ src/reference/
 
 **/test/
 *test.java
+
+.DS_Store
