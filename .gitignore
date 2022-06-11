@@ -85,3 +85,4 @@ src/reference/
 *test.java
 
 .DS_Store
+.idea
