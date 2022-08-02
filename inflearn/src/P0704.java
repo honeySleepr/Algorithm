@@ -7,6 +7,7 @@ public class P0704 {
 
 	private static int[] arr;
 	private static long count;
+	private static StringBuilder sb = new StringBuilder();
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -17,20 +18,24 @@ public class P0704 {
 		arr[2] = 1;
 		for (int i = 1; i < num + 1; i++) {
 			if (arr[i] != 0) {
-				System.out.println(arr[i]);
+				sb.append(arr[i]).append("\n");
 				continue;
 			}
-			System.out.println(arr[i] = arr[i - 2] + arr[i - 1]);
+			arr[i] = arr[i - 2] + arr[i - 1];
+			sb.append(arr[i]).append("\n");
 		}
 
+		System.out.println(sb);
+		sb.setLength(0);
 
 		/* 재귀로 풀기 */
 		arr = new int[num + 1];
 		DFS(num);
 		System.out.println("count : " + count);
 		for (int i = 1; i < arr.length; i++) {
-			System.out.println(arr[i]);
+			sb.append(arr[i]).append("\n");
 		}
+		System.out.println(sb);
 
 	}
 
