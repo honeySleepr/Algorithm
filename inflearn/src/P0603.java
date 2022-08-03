@@ -9,19 +9,18 @@ public class P0603 {
 	private static String[] solution(int n, String[] arr) {
 
 		for (int i = 1; i < n; i++) {
-			int target = 0;
+			int target = i;
 			String temp = arr[i];
 			for (int j = i - 1; j >= 0; j--) {
 				if (Integer.parseInt(arr[j]) > Integer.parseInt(temp)) {
-					arr[j + 1] = arr[j];
 					target = j;
+					arr[j + 1] = arr[j];
 				} else {
-					target = j + 1;
 					break;
 				}
 			}
 			arr[target] = temp;
-		}//ddd
+		}
 		return arr;
 	}
 
