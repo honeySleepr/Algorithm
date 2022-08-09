@@ -10,8 +10,9 @@ public class P0808 {
     private static int[] combinationArr;
     private static int[][] combinationTempArr;
     private static int[] pArr;
-    private static int[] checkArr;
+    private static boolean[] checkArr;
     private static boolean flag;
+    private static int count;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -19,38 +20,42 @@ public class P0808 {
         n = Integer.parseInt(split[0]);
         f = Integer.parseInt(split[1]);
 
-        combinationArr = new int[n + 1];
-        combinationTempArr = new int[n + 1][n + 1];
-        pArr = new int[n + 1];
-        checkArr = new int[n + 1];
+        combinationArr = new int[n];
+        combinationTempArr = new int[n][n];
+        pArr = new int[n];
+        checkArr = new boolean[n];
 
-        for (int i = 1; i < n + 1; i++) {
-            combinationArr[i] = C(n - 1, i - 1);
+        for (int i = 0; i < n; i++) {
+            combinationArr[i] = C(n - 1, i);
         }
-
-        DFS(1, 0);
+        DFS(0, 0);
+        // System.out.println(count);
     }
 
     private static void DFS(int L, int sum) {
-        if (sum == f && L > n) {
-            for (int i = 1; i < pArr.length; i++) {
+        // count++;
+        if (sum == f && L == n) {
+            for (int i = 0; i < pArr.length; i++) {
                 System.out.print(pArr[i] + " ");
             }
+            System.out.println();
             flag = true;
             return;
         }
-        if (flag || L > n || sum > f) {
+        if (flag || L == n || sum > f) {
             return;
         }
-        /* for문을 1부터 돌리기 때문에 사전순으로 빠른 답이 먼저 도출된다 */
-        for (int i = 1; i < n + 1; i++) {
-            if (checkArr[i] == 1) {
+
+
+        /* for문을 작은 수부터 돌리기 때문에 사전순으로 빠른 답이 먼저 구해지게된다 */
+        for (int i = 0; i < n; i++) {
+            if (checkArr[i]) {
                 continue;
             }
-            checkArr[i] = 1;
-            pArr[L] = i;
+            checkArr[i] = true;
+            pArr[L] = i + 1;
             DFS(L + 1, sum + (combinationArr[L] * pArr[L]));
-            checkArr[i] = 0;
+            checkArr[i] = false;
         }
     }
 

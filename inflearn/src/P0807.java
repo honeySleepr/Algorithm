@@ -18,12 +18,12 @@ public class P0807 {
         arr = new int[n + 1][r + 1];
 
         System.out.println(DFS(n, r));
-        //		System.out.println("count = " + count);
+        // System.out.println("count = " + count);
     }
 
     private static int DFS(int n, int r) {
-        //		count++;
-        if (arr[n][r] != 0) {
+        // count++;
+        if (arr[n][r] != 0) { /* 메모이제이션 안쓰면 count : 1637618399, 쓰면 533*/
             return arr[n][r];
         }
         if (n == r || r == 0) {
