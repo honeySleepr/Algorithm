@@ -46,7 +46,7 @@ public class BJ10989_QUICKSORT {
      * <h2>파티션2의 시작 인덱스를 구한다</h2>
      */
     private static int partition(int[] arr, int start, int end) {
-        int mid = arr[(start + end) / 2];
+        int mid = arr[(start + end) / 2]; /* while문 안에서 mid 인덱스의 값이 바뀔 수 있기 때문에 while문 밖에서 값을 저장해둔다 */
         while (start <= end) {
             while (arr[start] < mid) {
                 start++;
