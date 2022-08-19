@@ -1,17 +1,22 @@
-package bronze;
+package silver;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * <h1>수 정렬하기 3</h1>
+ * <h1>수 정렬하기 2</h1>
  * <h3>도움!! : X</h3>
  * <h3>체감 난이도 : ⭐︎</h3>
- * <h3>날짜 : 2022/08/17</h3>
- * <br><h2>comment : MergeSort를 사용해보았다(아직 구현 방법을 이해하진 못했다)</h2>
+ * <h3>날짜 : 2022/08/18</h3>
+ * <br><h2>comment : O(nlogn) 정렬 알고리즘을 사용해야한다. MergeSort 연습 </h2>
  */
-public class BJ10989_MERGESORT {
+public class BJ2751 {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -20,19 +25,23 @@ public class BJ10989_MERGESORT {
         for (int i = 0; i < N; i++) {
             arr[i] = Integer.parseInt(br.readLine());
         }
-        int[] temp = new int[arr.length];
-
-        mergeSort(arr, temp, 0, arr.length - 1);
+        solution(arr);
 
         StringBuilder sb = new StringBuilder();
         for (int i : arr) {
-            sb.append(i).append(" ");
+            sb.append(i).append("\n");
         }
         System.out.println(sb);
     }
 
+    private static int[] solution(int[] arr) {
+        int[] temp = new int[arr.length];
+        mergeSort(arr, temp, 0, arr.length - 1);
+        return arr;
+    }
+
     private static void mergeSort(int[] arr, int[] temp, int start, int end) {
-        if (start < end) { /* start == end 되면 재귀 return! */
+        if (start < end) {
             int mid = (start + end) / 2;
             mergeSort(arr, temp, start, mid);
             mergeSort(arr, temp, mid + 1, end);
@@ -57,21 +66,38 @@ public class BJ10989_MERGESORT {
             }
             index++;
         }
-        /* part1의 데이터가 남아있는 경우 그 값을 뒤에 붙여준다 */
-        /* part2의 데이터가 남아있는 경우에는 이미 arr에 해당 값이 들어가있으므로 놔두면 된다 */
         for (int i = 0; i <= mid - part1; i++) {
             arr[index + i] = temp[part1 + i];
         }
     }
+
+    static class TestBJ2751 {
+        @Test
+        void 입력_1() {
+            int[] ints = {2, 6, 7, 5, 9, 0, 1, 4, 3, 8};
+            Arrays.sort(ints);
+            assertArrayEquals(ints, solution(new int[] {2, 6, 7, 5, 9, 0, 1, 4, 3, 8}));
+        }
+
+        @Test
+        void 입력_2() {
+            int[] ints = {5, 2, 3, 1, 4, 2, 1, 7};
+            Arrays.sort(ints);
+            assertArrayEquals(ints, solution(new int[] {5, 2, 3, 1, 4, 2, 1, 7}));
+        }
+    }
+
 }
 /*
-8
-5
+10
 2
-3
+6
+7
+5
+9
+0
 1
 4
-2
-1
-7
+3
+8
 */
