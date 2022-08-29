@@ -6,7 +6,7 @@ import java.util.Arrays;
  * <h1>비밀지도</h1>
  * <h3>도움!! : O</h3>
  * <h3>날짜 : 2022/08/08</h3>
- * <br><h2>comment : </h2>
+ * <br><h2>comment : 비트 연산자 </h2>
  */
 public class P17681_Better {
 
