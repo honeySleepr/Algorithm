@@ -38,6 +38,7 @@ public class BJ14627 {
             max = Math.max(length, max);
         }
 
+        /* [이분탐색 템플릿, 이분 탐색] */
         int lo = 1; /* lo=0 으로하면 mid=0이 되어 ArithmeticException(`/ by zero`)이 발생할 수 있다 */
         /*lo 값을 잡을 때 실제로 사용될 수 있는 값인지 생각하자. 행렬의 인덱스였다면 0을 줘야겠지만 이 경우는 `나눌 수 있는 최소값`인 1을 줘야한다*/
         int hi = max + 1;

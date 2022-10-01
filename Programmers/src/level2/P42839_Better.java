@@ -54,11 +54,14 @@ public class P42839_Better {
         return true;
     }
 
-    private void permutation(String numbers, int size) {
-        if (sb.length() == size) {
-            numSet.add(Integer.parseInt(sb.toString()));
-            return;
-        }
+	/* [permutation릿 템플릿, DFS, 순열, Stringbuilder 사용 */
+	private void permutation(StringBuilder sb, String numbers) {
+		if (sb.length() > numbers.length()) {
+			return;
+		}
+		if (sb.length() != 0) {
+			numSet.add(Integer.parseInt(sb.toString()));
+		}
 
         for (int i = 0; i < numbers.length(); i++) {
             if (used[i]) {

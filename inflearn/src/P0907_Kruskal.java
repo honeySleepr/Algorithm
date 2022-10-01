@@ -61,6 +61,7 @@ public class P0907_Kruskal {
         System.out.println(answer);
     }
 
+    /* [Union-Find 템플릿, union find] */
     private static int union(int c1, int c2, int cost) {
         if (find(c1) != find(c2)) {
             arr[find(c1)] = find(c2);

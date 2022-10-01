@@ -36,6 +36,7 @@ public class BJ1389 {
             deepList.get(b).add(a);
         }
 
+        /* [BFS 템플릿] */
         int min = Integer.MAX_VALUE;
         int answer = 0;
         for (int i = 1; i <= N; i++) {
