@@ -2,10 +2,8 @@ package level2;
 
 import java.util.HashSet;
 import java.util.Set;
-
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.*;
 
 /**
  * <h1>소수 찾기</h1>
@@ -17,42 +15,36 @@ import static org.assertj.core.api.Assertions.*;
  */
 public class P42839_Better {
 
-    private boolean[] used;
-    private StringBuilder sb;
+	private boolean[] used;
+	private Set<Integer> numSet;
 
-    private Set<Integer> numSet;
+	public int solution(String numbers) {
+		StringBuilder sb = new StringBuilder();
+		numSet = new HashSet<>();
+		used = new boolean[numbers.length()];
+		permutation(sb, numbers);
 
-    public int solution(String numbers) {
-        sb = new StringBuilder();
-        numSet = new HashSet<>();
-        used = new boolean[numbers.length()];
+		int primeCount = 0;
+		for (Integer num : numSet) {
+			if (isPrime(num)) {
+				primeCount++;
+			}
+		}
 
-        for (int size = 1; size <= numbers.length(); size++) {
-            permutation(numbers, size);
-        }
+		return primeCount;
+	}
 
-        int primeCount = 0;
-
-        for (Integer num : numSet) {
-            if (isPrime(num)) {
-                primeCount++;
-            }
-        }
-
-        return primeCount;
-    }
-
-    private boolean isPrime(Integer num) {
-        if (num == 0 || num == 1) {
-            return false;
-        }
-        for (int i = 2; i * i <= num; i++) {
-            if (num % i == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
+	private boolean isPrime(Integer num) {
+		if (num == 0 || num == 1) {
+			return false;
+		}
+		for (int i = 2; i * i <= num; i++) {
+			if (num % i == 0) {
+				return false;
+			}
+		}
+		return true;
+	}
 
 	/* [permutation릿 템플릿, DFS, 순열, Stringbuilder 사용 */
 	private void permutation(StringBuilder sb, String numbers) {
@@ -63,42 +55,42 @@ public class P42839_Better {
 			numSet.add(Integer.parseInt(sb.toString()));
 		}
 
-        for (int i = 0; i < numbers.length(); i++) {
-            if (used[i]) {
-                continue;
-            }
-            used[i] = true;
-            sb.append(numbers.charAt(i));
-            permutation(numbers, size);
-            sb.deleteCharAt(sb.length() - 1);
-            used[i] = false;
-        }
+		for (int i = 0; i < numbers.length(); i++) {
+			if (used[i]) {
+				continue;
+			}
+			used[i] = true;
+			sb.append(numbers.charAt(i));
+			permutation(sb, numbers);
+			sb.deleteCharAt(sb.length() - 1);
+			used[i] = false;
+		}
+	}
 
-    }
+	static class TestP42839 {
 
-    static class TestP42839 {
-        private final P42839_Better p = new P42839_Better();
+		private final P42839_Better p = new P42839_Better();
 
-        @Test
-        void test1() {
-            String input = "011";
-            int answer = 2;
-            assertThat(p.solution(input)).isEqualTo(answer);
-        }
+		@Test
+		void test1() {
+			String input = "011";
+			int answer = 2;
+			assertThat(p.solution(input)).isEqualTo(answer);
+		}
 
-        @Test
-        void test2() {
-            String input = "17";
-            int answer = 3;
-            assertThat(p.solution(input)).isEqualTo(answer);
-        }
+		@Test
+		void test2() {
+			String input = "17";
+			int answer = 3;
+			assertThat(p.solution(input)).isEqualTo(answer);
+		}
 
-        @Test
-        void test3() {
-            String input = "12345";
-            int answer = 36;
-            assertThat(p.solution(input)).isEqualTo(answer);
-        }
+		@Test
+		void test3() {
+			String input = "12345";
+			int answer = 36;
+			assertThat(p.solution(input)).isEqualTo(answer);
+		}
 
-    }
+	}
 }

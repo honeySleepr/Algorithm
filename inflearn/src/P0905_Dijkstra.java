@@ -55,24 +55,26 @@ public class P0905_Dijkstra {
         queue.add(new Road(startNode, 0));
         arr[startNode] = 0;
 
-        /* 이 while문 부분이 `다익스트라 알고리즘` 핵심 */
+        /* 다익스트라 알고리즘 템플릿 - 비용이 음수인 경우에는 사용할 수 없다!(대안:벨만포드)
+         * 한 정점에서 다른 정점들로 갈 수 있는 최단거리를 구한다 */
         while (queue.size() > 0) {
             Road poll = queue.poll();
-            int pollCity = poll.city;
-            int pollCost = poll.cost;
+            int node = poll.city;
+            int cost = poll.cost;
 
             /**
              * 이 부분 좀 헷갈리는데, 만약 큐에 (2,11), (2,13) 두개가 들어갔으면 priorityQueue니까 (2,11)이 먼저 poll 된다
              * 그게 최소 cost라면 arr에 등록된다
              * 그럼 queue에 남아 있는 (2,13)은 어차피 최소 cost가 될 수 없으므로 사전에 거르는 것
              */
-            if (arr[pollCity] < pollCost) {
+            if (arr[node] < cost) {
                 continue;
             }
-            for (Road road : list.get(pollCity)) {
-                if (arr[road.city] > pollCost + road.cost) {
-                    arr[road.city] = pollCost + road.cost;
-                    queue.add(new Road(road.city, pollCost + road.cost));
+            for (Road road : list.get(node)) {
+                int newCost = cost + road.cost;
+                if (arr[road.city] > newCost) {
+                    arr[road.city] = newCost;
+                    queue.add(new Road(road.city, newCost));
                 }
             }
         }
