@@ -19,10 +19,14 @@ public class P4 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(br.readLine());
 		String[] split = br.readLine().split("\\s");
+
+		/* 에라토스테네스의 체 템플릿 */
 		boolean[] notPrime = new boolean[n + 1];
 		notPrime[0] = notPrime[1] = true;
-
 		for (int i = 2; i * i <= n; i++) {
+			if (notPrime[i]) {
+				continue;
+			}
 			for (int j = i * i; j <= n; j += i) {
 				notPrime[j] = true;
 			}
@@ -35,7 +39,6 @@ public class P4 {
 			}
 		}
 		System.out.println(answer);
-
 	}
 
 }
